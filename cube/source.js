@@ -29,7 +29,7 @@ function init() {
 	renderer = new THREE.WebGLRenderer();
 	renderer.setSize( window.innerWidth, window.innerHeight );
 	container.appendChild( renderer.domElement );
-	
+
 
 	stats = new Stats();
 	stats.domElement.style.position = 'absolute';
