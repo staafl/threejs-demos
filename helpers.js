@@ -1,1 +1,1 @@
-var T = THREE;
+var t = THREE;

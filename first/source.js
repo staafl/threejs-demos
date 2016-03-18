@@ -1,23 +1,22 @@
-
 $(function () {
-    var scene = new T.Scene();
-    var camera = new T.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
+    var scene = new t.Scene();
+    var camera = new t.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
 
-    var renderer = new T.WebGLRenderer();
+    var renderer = new t.WebGLRenderer();
     renderer.setClearColor(0x333333, 0.5);
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.shadowMap.enabled = true;
 
-    var spotLight = new T.SpotLight();
+    var spotLight = new t.SpotLight();
     spotLight.position.set(-40, 60, -10);
     spotLight.castShadow = true;
     scene.add(spotLight);
 
-    var axes = new T.AxisHelper(10);
+    var axes = new t.AxisHelper(10);
     // scene.add(axes);
 
-    var plane = new T.Mesh(new T.PlaneGeometry(60, 20, 1, 1),
-                           new T.MeshLambertMaterial({ color: 0xCCCCCC }));
+    var plane = new t.Mesh(new t.PlaneGeometry(60, 20, 1, 1),
+                           new t.MeshLambertMaterial({ color: 0xCCCCCC }));
     plane.rotation.x = -0.5 * Math.PI;
     plane.position.x = 15;
     plane.position.y = 0;
@@ -26,8 +25,8 @@ $(function () {
 
     scene.add(plane);
 
-    var cube = new T.Mesh(new T.CubeGeometry(4, 4, 4),
-                          new T.MeshLambertMaterial({ color: 0xFF0000, wireframe: false }));
+    var cube = new t.Mesh(new t.CubeGeometry(4, 4, 4),
+                          new t.MeshLambertMaterial({ color: 0xFF0000, wireframe: false }));
     cube.position.x = - 4;
     cube.position.y = 3;
     cube.position.z = 0;
@@ -35,8 +34,8 @@ $(function () {
 
     scene.add(cube);
 
-    var sphere = new T.Mesh(new T.SphereGeometry(4, 20, 20),
-                            new T.MeshLambertMaterial({ color: 0x7777ff, wireframe: false }));
+    var sphere = new t.Mesh(new t.SphereGeometry(4, 20, 20),
+                            new t.MeshLambertMaterial({ color: 0x7777ff, wireframe: false }));
     sphere.position.x = 20;
     sphere.position.y = 4;
     sphere.position.z = 2;
