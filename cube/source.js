@@ -24,20 +24,14 @@ function init() {
     scene.add(camera);
     camera.lookAt(cube.position);
 
-	container = document.createElement( 'div' );
-	document.body.appendChild( container );
+	container = $("#container").get(0);
 
 	renderer = new t.WebGLRenderer();
 	renderer.setSize( window.innerWidth, window.innerHeight );
     renderer.setClearColor(0xFFFFFF, 1.0);
 
 	container.appendChild( renderer.domElement );
-
-
-	stats = new Stats();
-	stats.domElement.style.position = 'absolute';
-	stats.domElement.style.top = '0px';
-	container.appendChild( stats.domElement );
+	addStats();
 }
 
 function animate() {
