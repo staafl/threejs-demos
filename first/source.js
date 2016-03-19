@@ -53,12 +53,13 @@ $(function () {
     var renderFunction = function() {
         window.requestAnimationFrame(renderFunction);
         renderer.render(scene, camera);
+        stats.update();
     };
     var time = 0;
     setInterval(function() {
         time += 1;
         sphere.position.y= 4 + Math.abs(10 * Math.sin(Math.PI * (time / 10)));
     }, 100);
-    renderFunction();
     addStats();
+    renderFunction();
 });

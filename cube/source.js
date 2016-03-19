@@ -1,6 +1,6 @@
 var startTime	= Date.now();
 var container;
-var camera, scene, renderer, stats;
+var camera, scene, renderer;
 var cube;
 
 init();

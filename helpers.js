@@ -1,5 +1,5 @@
 var t = THREE;
-
+var stats;
 function addStats() {
 	stats = new Stats();
 	stats.domElement.style.position = 'absolute';
