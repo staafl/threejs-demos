@@ -60,4 +60,5 @@ $(function () {
         sphere.position.y= 4 + Math.abs(10 * Math.sin(Math.PI * (time / 10)));
     }, 100);
     renderFunction();
+    addStats();
 });
