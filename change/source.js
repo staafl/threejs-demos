@@ -7,11 +7,32 @@ function play()
     var priceToPay = 
          whichCase == 0 ? randomInt(100) * 100 + randomInt(100)
                         : randomInt(10) * 100 + randomInt(100);
-    var lowerPowerOf10Inclusive = Math.pow(10, Math.max(Math.floor(Math.log10(priceToPay)) - 1), 0);
-    var round = _.chain(roundTo).filter(function(a) { return a >= lowerPowerOf10Inclusive }).shuffle().first();
-    // 
+    // put a lower bound on the maximum bill they can use to pay
+    var lowerPowerOf10Exclusive = Math.pow(10, Math.max(Math.floor(Math.log10(priceToPay)) - 1), 0);
+    var round = _.chain(roundTo).filter(function(a) { return a >= lowerPowerOf10Exclusive }).shuffle().first().value();
     var paid = (Math.ceil(priceToPay / round)) * round;
-    return (priceToPay / 100) + " " + (round / 100) + " " + (paid / 100);
+    var selectedCoins = [];
+    var remainingToPay = paid;
+    var take = function(coinValue) 
+    {
+        console.log(coinValue);
+        if (remainingToPay / coinValue < 1)
+        {
+            return;
+        }
+        var count = randomInt(Math.floor(remainingToPay / coinValue)) + 1;
+        selectedCoins.push([coinValue/100, count]);
+        remainingToPay -= coinValue * count;
+    };
+    
+    // selectedCoins.push([round / 100, paid / round])
+    take(round);
+    while (remainingToPay)
+    {
+        take(_.chain(coins).filter(function(c) { return c >= round }).shuffle().first().value());
+        console.log(remainingToPay);
+    }
+  return (priceToPay / 100) + " " + (round / 100) + " " + (paid / 100) + " " + selectedCoins;
 }
 
 function randomInt(max)
